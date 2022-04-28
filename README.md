@@ -22,14 +22,14 @@ The Project using 2 APIs from GitHub API, fetching repositories using *organizat
 
 There are 2 Material UI TextField for inputting *organization name* and *username*. After entering the keyword for one of the input field user can press "Enter" button to perform the searching function. After fetching some data from the server there will be some items got rendered on a list.
 
-##Things I have done:
+## Things I have done:
 
 * Search Functions for both *username* and *organization name*
 * An Autocomplete for choosing sort orders which contains: Most Stars, Most Popular, Most Popular Unforked Repositories, Most Forks (sort by _fork_count_) and Most Open Issues(sort by _open_issues_count_).
 * Render a list of GitHub Repositories name, the description of the repo and language with the stars count.
 * I'm trying to make some unit test with jest but could not find a way to mock the api call.
 
-##Things I want to improve:
+## Things I want to improve:
 
 * Improving the UI - The design is very messy and there are still more stuffs to add to make it looks better.
 * Adding a virtual scroll or something... I'm still trying to investigate on it.
