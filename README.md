@@ -28,6 +28,7 @@ There are 2 Material UI TextField for inputting *organization name* and *usernam
 * An Autocomplete for choosing sort orders which contains: Most Stars, Most Popular, Most Popular Unforked Repositories, Most Forks (sort by _fork_count_) and Most Open Issues(sort by _open_issues_count_).
 * Render a list of GitHub Repositories name, the description of the repo and language with the stars count.
 * I'm trying to make some unit test with jest but could not find a way to mock the api call.
+* Deploy the Project to https://phucan97vn.github.io/github-repository-list/ using gh-pages.
 
 ## Things I want to improve:
 
