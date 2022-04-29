@@ -38,5 +38,3 @@ There are 2 Material UI TextField for inputting *organization name* and *usernam
 * The useContext with useReducer part is kinda new to me when I tried to implement it together, so I believe there are still more ways to improve it.
 * Add some view details features for each item ( maybe a link to redirect at the original repository)
 * Separating the fetching api functions into a different service.js file.
-
-Due to some health issues, I could not perform my best, but I want to express my gratitude to dwarves team for providing me this opportunity to practice my skill and experience new things. Thanks.
