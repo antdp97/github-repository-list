@@ -1,14 +1,12 @@
-import React, {useEffect, useReducer, useRef, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Container from "@mui/material/Container";
-import SearchBox from "../components/SearchBox";
-import RepoList from "../components/RepoList";
+import SearchBox from "../SearchBox";
+import RepoList from "../RepoList";
 import Box from "@mui/material/Box";
 import {makeStyles} from "@mui/styles";
-import reducer, {initialState} from "../store/reducer";
-import {setRepositoriesList} from "../store/actions";
-import requests from "../utils/axios";
-import {Autocomplete, TextField} from "@mui/material";
-import {sortOptions} from "../utils";
+import {Alert, Autocomplete, Snackbar, TextField} from "@mui/material";
+import {sortOptions} from "../../utils";
+import {RepoListContext} from "../../context";
 
 const useStyle = makeStyles({
     wrapper: {
@@ -16,43 +14,41 @@ const useStyle = makeStyles({
     }
 })
 
-const RepositoryContext = React.createContext();
-
 const GitHubRepoListPage = () => {
     const classes = useStyle();
-    const [{repositoryList, per_page, page} , dispatch] = useReducer(reducer, initialState);
+    const { sortFunction } = useContext(RepoListContext)
     const [sortValue, setSortValue] = useState(sortOptions[0])
-    // const userNameInput = useRef(null)
-    // const orgNameInput = useRef(null)
-    //
-    useEffect(() => {
-        requests.get(`/users/gaearon/repos?page=${page}&per_page=${per_page}`).then((res) => dispatch(setRepositoriesList(res)))
-    }, [])
+    const [errorMessage, setErrorMessage] = useState('')
+
 
     const onChangeSortValue = (value) => {
         setSortValue(value);
         const indexOfValue = sortOptions.indexOf(value)
-        dispatch(sortOptions[indexOfValue].action())
+        sortFunction[indexOfValue]()
+    }
+
+    const handleClose = () => {
+        setErrorMessage("");
     }
 
     return (
         <Container maxWidth="md">
-            <RepositoryContext.Provider value={repositoryList}>
                 <Box className={classes.wrapper}>
-                    <SearchBox />
+                    <SearchBox setErrorMessage={setErrorMessage}/>
                     <Autocomplete
                         value={sortValue}
                         renderInput={(params) => <TextField {...params} label={"Sort By"}/>}
                         options={sortOptions}
-                        getOptionLabel={(option) => option.label}
                         onChange={(e,value) => onChangeSortValue(value)}
                         disableClearable
                     />
-                    <RepoList
-                        // repositoryList={repositoryList}
-                    />
+                    <RepoList />
+                    <Snackbar open={errorMessage !== ''} autoHideDuration={6000} onClose={handleClose}>
+                        <Alert onClose={handleClose} variant="filled" severity="error">
+                            {errorMessage}
+                        </Alert>
+                    </Snackbar>
                 </Box>
-            </RepositoryContext.Provider>
         </Container>
     )
 }

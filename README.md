@@ -14,57 +14,27 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+# Owner's Words
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Description
 
-### `npm run build`
+The Project using 2 APIs from GitHub API, fetching repositories using *organization name* and *username* separately. The Project is using Material UI as UI library, axios, react-testing-library - jest for testing.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+There are 2 Material UI TextField for inputting *organization name* and *username*. After entering the keyword for one of the input field user can press "Enter" button to perform the searching function. After fetching some data from the server there will be some items got rendered on a list.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Things I have done:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Search Functions for both *username* and *organization name*
+* An Autocomplete for choosing sort orders which contains: Most Stars, Most Popular, Most Popular Unforked Repositories, Most Forks (sort by _fork_count_) and Most Open Issues(sort by _open_issues_count_).
+* Render a list of GitHub Repositories name, the description of the repo and language with the stars count.
+* I'm trying to make some unit test with jest but could not find a way to mock the api call.
+* Deploy the Project to https://phucan97vn.github.io/github-repository-list/ using gh-pages.
 
-### `npm run eject`
+## Things I want to improve:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Improving the UI - The design is very messy and there are still more stuffs to add to make it looks better.
+* Adding a virtual scroll or something... I'm still trying to investigate on it.
+* Add more sort options.
+* The useContext with useReducer part is kinda new to me when I tried to implement it together, so I believe there are still more ways to improve it.
+* Add some view details features for each item ( maybe a link to redirect at the original repository)
+* Separating the fetching api functions into a different service.js file.
